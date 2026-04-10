@@ -23,11 +23,172 @@ const INITIAL_NODES = [
       { id: "f2", name: "Assessment_Date", type: "Date", critical: false },
       { id: "f3", name: "Address", type: "Text", critical: true },
       { id: "f4", name: "Status", type: "Picklist", critical: true },
+      { id: "f5", name: "Property_Type", type: "Picklist", critical: false },
+      { id: "f6", name: "Order_ID", type: "ID/Key", critical: true },
+      { id: "f7", name: "Photo_Upload", type: "File", critical: false },
+      { id: "f8", name: "Agent_Email", type: "Email", critical: true },
+    ],
+  },
+  {
+    id: "n2",
+    system: "crm",
+    name: "Zoho CRM — Leads",
+    app: "zohocrm",
+    fields: [
+      { id: "f9", name: "First_Name", type: "Text", critical: true },
+      { id: "f10", name: "Last_Name", type: "Text", critical: true },
+      { id: "f11", name: "Email", type: "Email", critical: true },
+      { id: "f12", name: "Phone", type: "Phone", critical: false },
+      { id: "f13", name: "Lead_Source", type: "Picklist", critical: true },
+      { id: "f14", name: "Lead_Status", type: "Picklist", critical: true },
+      { id: "f15", name: "Street", type: "Text", critical: false },
+      { id: "f16", name: "City", type: "Text", critical: false },
+      { id: "f17", name: "State", type: "Text", critical: false },
+      { id: "f18", name: "Company", type: "Text", critical: false },
+    ],
+  },
+  {
+    id: "n3",
+    system: "make",
+    name: "Zoho Order to Drive",
+    app: "Make Scenario #4484290",
+    fields: [
+      { id: "f19", name: "Webhook_Payload", type: "Text", critical: true },
+      { id: "f20", name: "Order_ID", type: "ID/Key", critical: true },
+      { id: "f21", name: "Drive_Folder_ID", type: "ID/Key", critical: true },
+      { id: "f22", name: "Notion_Page_ID", type: "ID/Key", critical: false },
+    ],
+  },
+  {
+    id: "n4",
+    system: "make",
+    name: "Auto Upload BPO Photos",
+    app: "Make Scenario #4484468",
+    fields: [
+      { id: "f23", name: "Email_Attachment", type: "File", critical: true },
+      { id: "f24", name: "Drive_Folder_Path", type: "Text", critical: true },
+      { id: "f25", name: "Datastore_Record", type: "ID/Key", critical: false },
+    ],
+  },
+  {
+    id: "n5",
+    system: "make",
+    name: "Notion Status → Zoho Lead Source",
+    app: "Make Scenario #4503350",
+    fields: [
+      { id: "f26", name: "Notion_Status", type: "Picklist", critical: true },
+      { id: "f27", name: "Lead_Source", type: "Picklist", critical: true },
+      { id: "f28", name: "CRM_Record_ID", type: "ID/Key", critical: true },
+    ],
+  },
+  {
+    id: "n6",
+    system: "make",
+    name: "Zoho Lead Source → Notion Status",
+    app: "Make Scenario #4536425",
+    fields: [
+      { id: "f29", name: "Lead_Source_Webhook", type: "Text", critical: true },
+      { id: "f30", name: "Notion_DB_ID", type: "ID/Key", critical: true },
+      { id: "f31", name: "Status_Property", type: "Picklist", critical: true },
+    ],
+  },
+  {
+    id: "n7",
+    system: "make",
+    name: "Run AI Analysis",
+    app: "Make Scenario #4581722",
+    fields: [
+      { id: "f32", name: "Google_Drive_File", type: "File", critical: true },
+      { id: "f33", name: "Notion_Page", type: "ID/Key", critical: true },
+      { id: "f34", name: "AI_Response", type: "Text", critical: false },
+      { id: "f35", name: "Datastore_Key", type: "ID/Key", critical: true },
+    ],
+  },
+  {
+    id: "n8",
+    system: "make",
+    name: "Form Upload → Order Folder",
+    app: "Make Scenario #4649869",
+    fields: [
+      { id: "f36", name: "Sheets_Row", type: "Text", critical: true },
+      { id: "f37", name: "Drive_File_ID", type: "ID/Key", critical: true },
+      { id: "f38", name: "Order_Folder_ID", type: "ID/Key", critical: true },
+      { id: "f39", name: "Notion_Update", type: "Text", critical: false },
+    ],
+  },
+  {
+    id: "n9",
+    system: "notion",
+    name: "Notion — Order Tracker",
+    app: "notion-db",
+    fields: [
+      { id: "f40", name: "Order_ID", type: "ID/Key", critical: true },
+      { id: "f41", name: "Status", type: "Picklist", critical: true },
+      { id: "f42", name: "Client_Name", type: "Text", critical: true },
+      { id: "f43", name: "Drive_Folder_URL", type: "URL", critical: false },
+      { id: "f44", name: "Lead_Source", type: "Picklist", critical: true },
+      { id: "f45", name: "AI_Analysis", type: "Text", critical: false },
+    ],
+  },
+  {
+    id: "n10",
+    system: "gdrive",
+    name: "Google Drive — BPO Orders",
+    app: "google-drive",
+    fields: [
+      { id: "f46", name: "Order_Folder", type: "ID/Key", critical: true },
+      { id: "f47", name: "Photo_Files", type: "File", critical: true },
+      { id: "f48", name: "Assessment_PDF", type: "File", critical: false },
+    ],
+  },
+  {
+    id: "n11",
+    system: "sheets",
+    name: "Google Sheets — Upload Log",
+    app: "google-sheets",
+    fields: [
+      { id: "f49", name: "Order_ID", type: "ID/Key", critical: true },
+      { id: "f50", name: "File_Name", type: "Text", critical: false },
+      { id: "f51", name: "Upload_Date", type: "Date", critical: false },
+      { id: "f52", name: "Status", type: "Picklist", critical: false },
     ],
   },
 ];
 
-const INITIAL_CONNECTIONS = [];
+const INITIAL_CONNECTIONS = [
+  // Zoho Creator → Make: Zoho Order to Drive
+  { id: "c1", fromNode: "n1", fromField: "f6", toNode: "n3", toField: "f20", via: "Zoho Order to Drive #4484290", direction: "one-way" },
+  { id: "c2", fromNode: "n1", fromField: "f4", toNode: "n3", toField: "f19", via: "Zoho Order to Drive #4484290", direction: "one-way" },
+
+  // Make: Zoho Order to Drive → Google Drive
+  { id: "c3", fromNode: "n3", fromField: "f20", toNode: "n10", toField: "f46", via: "createAFolder", direction: "one-way" },
+
+  // Make: Zoho Order to Drive → Notion
+  { id: "c4", fromNode: "n3", fromField: "f20", toNode: "n9", toField: "f40", via: "Zoho Order to Drive #4484290", direction: "one-way" },
+  { id: "c5", fromNode: "n3", fromField: "f19", toNode: "n9", toField: "f41", via: "Zoho Order to Drive #4484290", direction: "one-way" },
+
+  // Make: Auto Upload BPO Photos → Google Drive
+  { id: "c6", fromNode: "n4", fromField: "f23", toNode: "n10", toField: "f47", via: "Auto Upload BPO Photos #4484468", direction: "one-way" },
+
+  // Notion ⇄ Zoho CRM (via Make scenarios)
+  { id: "c7", fromNode: "n9", fromField: "f44", toNode: "n5", toField: "f26", via: "Notion Status → Zoho Lead Source", direction: "one-way" },
+  { id: "c8", fromNode: "n5", fromField: "f27", toNode: "n2", toField: "f13", via: "Make Scenario #4503350", direction: "one-way" },
+  { id: "c9", fromNode: "n2", fromField: "f13", toNode: "n6", toField: "f29", via: "Zoho Lead Source → Notion Status", direction: "one-way" },
+  { id: "c10", fromNode: "n6", fromField: "f31", toNode: "n9", toField: "f41", via: "Make Scenario #4536425", direction: "one-way" },
+
+  // Make: Run AI Analysis
+  { id: "c11", fromNode: "n10", fromField: "f47", toNode: "n7", toField: "f32", via: "Run AI Analysis #4581722", direction: "one-way" },
+  { id: "c12", fromNode: "n7", fromField: "f34", toNode: "n9", toField: "f45", via: "Run AI Analysis #4581722", direction: "one-way" },
+
+  // Google Sheets → Make: Form Upload → Order Folder
+  { id: "c13", fromNode: "n11", fromField: "f49", toNode: "n8", toField: "f36", via: "Form Upload → Order Folder #4649869", direction: "one-way" },
+  { id: "c14", fromNode: "n8", fromField: "f37", toNode: "n10", toField: "f47", via: "Form Upload → Order Folder #4649869", direction: "one-way" },
+  { id: "c15", fromNode: "n8", fromField: "f39", toNode: "n9", toField: "f45", via: "Form Upload → Order Folder #4649869", direction: "one-way" },
+
+  // Zoho Creator → Zoho CRM
+  { id: "c16", fromNode: "n1", fromField: "f1", toNode: "n2", toField: "f9", via: "Zoho Creator → CRM Sync", direction: "one-way" },
+  { id: "c17", fromNode: "n1", fromField: "f8", toNode: "n2", toField: "f11", via: "Zoho Creator → CRM Sync", direction: "one-way" },
+];
 
 function generateId() {
   return "id_" + Math.random().toString(36).slice(2, 10);
